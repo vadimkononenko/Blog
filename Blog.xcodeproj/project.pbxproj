@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A721DF372A5D9DFF00C4C45B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721DF362A5D9DFF00C4C45B /* ContentView.swift */; };
 		A74734D02A5D5BDA007D6190 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74734CF2A5D5BDA007D6190 /* LoginView.swift */; };
 		A74734D22A5D5BED007D6190 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74734D12A5D5BED007D6190 /* PostItem.swift */; };
 		A78E34242A5C327200BB1BD4 /* BlogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E34232A5C327200BB1BD4 /* BlogApp.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A721DF362A5D9DFF00C4C45B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A74734CF2A5D5BDA007D6190 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A74734D12A5D5BED007D6190 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		A78E34202A5C327200BB1BD4 /* Blog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 				A78E34342A5C339400BB1BD4 /* Persistance */,
 				A78E34352A5C33BD00BB1BD4 /* Services */,
 				A78E34232A5C327200BB1BD4 /* BlogApp.swift */,
+				A721DF362A5D9DFF00C4C45B /* ContentView.swift */,
 				A78E34272A5C327300BB1BD4 /* Assets.xcassets */,
 				A78E34292A5C327300BB1BD4 /* Preview Content */,
 			);
@@ -204,6 +207,7 @@
 				A78E343E2A5C425E00BB1BD4 /* BlogViewModel.swift in Sources */,
 				A74734D02A5D5BDA007D6190 /* LoginView.swift in Sources */,
 				A78E343A2A5C35E700BB1BD4 /* CoreDataManager.swift in Sources */,
+				A721DF372A5D9DFF00C4C45B /* ContentView.swift in Sources */,
 				A78E343C2A5C424900BB1BD4 /* HomeView.swift in Sources */,
 				A78E34422A5C462100BB1BD4 /* AddPostView.swift in Sources */,
 				A78E34242A5C327200BB1BD4 /* BlogApp.swift in Sources */,
