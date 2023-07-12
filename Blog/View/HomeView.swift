@@ -45,9 +45,12 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
-                        Button("Profile") {
-                            
+                        NavigationLink {
+                            ProfileView()
+                        } label: {
+                            Text("Profile")
                         }
+
                         Button("Logout") {
                             viewModel.logoutUser()
                             loggedIn = false

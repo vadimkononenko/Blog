@@ -19,6 +19,7 @@
 		A78E343E2A5C425E00BB1BD4 /* BlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E343D2A5C425E00BB1BD4 /* BlogViewModel.swift */; };
 		A78E34402A5C461A00BB1BD4 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E343F2A5C461A00BB1BD4 /* AddUserView.swift */; };
 		A78E34422A5C462100BB1BD4 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E34412A5C462100BB1BD4 /* AddPostView.swift */; };
+		A7B108F62A5EC2F80083CA5C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B108F52A5EC2F80083CA5C /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		A78E343D2A5C425E00BB1BD4 /* BlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewModel.swift; sourceTree = "<group>"; };
 		A78E343F2A5C461A00BB1BD4 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		A78E34412A5C462100BB1BD4 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
+		A7B108F52A5EC2F80083CA5C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				A78E34412A5C462100BB1BD4 /* AddPostView.swift */,
 				A74734CF2A5D5BDA007D6190 /* LoginView.swift */,
 				A74734D12A5D5BED007D6190 /* PostItem.swift */,
+				A7B108F52A5EC2F80083CA5C /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				A721DF372A5D9DFF00C4C45B /* ContentView.swift in Sources */,
 				A78E343C2A5C424900BB1BD4 /* HomeView.swift in Sources */,
 				A78E34422A5C462100BB1BD4 /* AddPostView.swift in Sources */,
+				A7B108F62A5EC2F80083CA5C /* ProfileView.swift in Sources */,
 				A78E34242A5C327200BB1BD4 /* BlogApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

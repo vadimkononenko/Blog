@@ -113,9 +113,10 @@ class CoreDataManager {
         }
     }
     
-    func getUsersPosts(email: String, password: String) -> [PostEntity]? {
+    func getUsersPosts(userID: String) -> [PostEntity]? {
         let userRequest = NSFetchRequest<UserEntity>(entityName: "UserEntity")
-        userRequest.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+//        userRequest.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+        userRequest.predicate = NSPredicate(format: "id == %@", userID)
         
         let postRequest = NSFetchRequest<PostEntity>(entityName: "PostEntity")
         

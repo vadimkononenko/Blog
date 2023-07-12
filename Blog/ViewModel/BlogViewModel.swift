@@ -17,6 +17,11 @@ class BlogViewModel: ObservableObject {
     @Published var posts: [PostEntity] = []
     @Published var categories: [CategoryEntity] = []
     @Published var loggedInUser: UserEntity?
+    @Published var loggedInUserPosts: [PostEntity]?
+    
+    var loggedInUserPostsCount: Int {
+        return loggedInUserPosts?.count ?? 0
+    }
     
     init() {
         getUsers()
@@ -24,6 +29,7 @@ class BlogViewModel: ObservableObject {
         getCategories()
         
         loggedInUser = getUserById(id: loggedInUserID)
+        getUserPosts()
     }
     
     //MARK: - Auth
@@ -98,6 +104,10 @@ class BlogViewModel: ObservableObject {
         }
     }
     
+    func getUserPosts() {
+        loggedInUserPosts = manager.getUsersPosts(userID: loggedInUserID)?.reversed()
+    }
+    
     func getCategories() {
         if let categories = manager.getAllCategories() {
             self.categories = categories
@@ -132,6 +142,7 @@ class BlogViewModel: ObservableObject {
             self.getUsers()
             self.getPosts()
             self.getCategories()
+            self.getUserPosts()
         }
     }
     
