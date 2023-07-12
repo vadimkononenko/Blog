@@ -27,7 +27,7 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Username")
+                    Text(viewModel.loggedInUser?.username ?? "")
                         .font(.title)
                         .fontWeight(.medium)
                 }

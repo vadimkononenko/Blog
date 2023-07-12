@@ -9,6 +9,8 @@ import SwiftUI
 
 class BlogViewModel: ObservableObject {
     
+    @AppStorage("loggedInUserID") private var loggedInUserID: String = ""
+    
     private let manager = CoreDataManager.shared
     
     @Published var users: [UserEntity] = []
@@ -20,23 +22,29 @@ class BlogViewModel: ObservableObject {
         getUsers()
         getPosts()
         getCategories()
+        
+        loggedInUser = getUserById(id: loggedInUserID)
     }
     
     //MARK: - Auth
     
-    func loginUser(email: String, password: String) {
+    func loginUser(email: String, password: String) -> Bool {
         manager.login(email: email, password: password) { result in
             switch result {
             case .success(let user):
                 self.loggedInUser = user
+                /// will change it
+                self.loggedInUserID = user.id?.uuidString ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+        return loggedInUser != nil
     }
     
     func logoutUser() {
         loggedInUser = nil
+        loggedInUserID = ""
     }
     
     //MARK: - Creating
@@ -77,6 +85,10 @@ class BlogViewModel: ObservableObject {
         if let users = manager.getAllUsers() {
             self.users = users
         }
+    }
+    
+    func getUserById(id: String) -> UserEntity? {
+        users.first(where: { $0.id == UUID(uuidString: id) })
     }
     
     func getPosts() {

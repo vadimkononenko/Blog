@@ -33,7 +33,7 @@ struct LoginView: View {
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
                     
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                         .background(Color.clear)
                         .padding()
                         .overlay {
@@ -43,36 +43,35 @@ struct LoginView: View {
                         .padding()
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
-                    
-                    NavigationLink(destination:
-                        HomeView()
-                            .navigationBarBackButtonHidden(true)
-                    ) {
-                        Button("Login") {
-                            guard
-                                !email.isEmpty, !password.isEmpty
-                            else {
-                                return
-                            }
-                            
-                            viewModel.loginUser(email: email, password: password)
-//                            UserDefaults.standard.set(true, forKey: "loggedIn")
-                            loggedIn = true
+
+                    Button("Login") {
+                        guard
+                            !email.isEmpty, !password.isEmpty
+                        else {
+                            return
                         }
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                        
+                        if viewModel.loginUser(email: email, password: password) {
+                            loggedIn = viewModel.loginUser(email: email, password: password)
+                        }
                     }
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .padding(.horizontal)
                     
                     Spacer()
                 }
                 .padding(.top, 30)
             }
             .navigationTitle("Login")
+            .navigationDestination(isPresented: $loggedIn) {
+                HomeView()
+                    .navigationBarBackButtonHidden(true)
+            }
         }
     }
 }
