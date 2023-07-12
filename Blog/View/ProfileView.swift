@@ -12,6 +12,7 @@ struct ProfileView: View {
     @EnvironmentObject private var viewModel: BlogViewModel
     
     @State private var posts: [PostEntity] = []
+    @State private var deletingMode: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -48,19 +49,37 @@ struct ProfileView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 10)
+                                .onTapGesture {
+                                    if deletingMode {
+                                        viewModel.deletePost(post)
+                                    }
+                                }
+                                .onDisappear(perform: loadPosts)
                         }
                     }
                     
                     Spacer()
                 }
             }
-        }
-        .onAppear {
-            if let posts = viewModel.loggedInUserPosts {
-                self.posts = posts
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(deletingMode ? "Cancel" : "Edit") {
+                        deletingMode = !deletingMode
+                    }
+                }
             }
         }
+        .onAppear {
+            loadPosts()
+        }
     }
+    
+    private func loadPosts() {
+        if let posts = viewModel.loggedInUserPosts {
+            self.posts = posts
+        }
+    }
+    
 }
 
 struct ProfileView_Previews: PreviewProvider {

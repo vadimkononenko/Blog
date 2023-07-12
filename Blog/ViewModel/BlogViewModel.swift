@@ -40,6 +40,7 @@ class BlogViewModel: ObservableObject {
             case .success(let user):
                 self.loggedInUser = user
                 self.loggedInUserID = user.id?.uuidString ?? ""
+                self.getUserPosts()
             case .failure(let error):
                 print(error.localizedDescription)
             }

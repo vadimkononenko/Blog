@@ -40,7 +40,6 @@ struct HomeView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-                    .tint(.black)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -63,10 +62,10 @@ struct HomeView: View {
                                     .stroke()
                             }
                     }
-                    .tint(.black)
                 }
             }
         }
+        .tint(.black)
         .sheet(isPresented: $showAddPost) {
             AddPostView()
                 .presentationDetents([.medium])
