@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "loggedIn")
+//    @State private var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "loggedIn")
+    
+    @AppStorage("loggedIn") private var loggedIn = false
     
     var body: some View {
         Group {
-            isLoggedIn ?
+            loggedIn ?
                 AnyView(HomeView()) : AnyView(LoginView())
         }
     }

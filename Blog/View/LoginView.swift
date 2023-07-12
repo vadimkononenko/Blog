@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @AppStorage("loggedIn") private var loggedIn = false
     @EnvironmentObject private var viewModel: BlogViewModel
     
     @State private var email: String = ""
@@ -55,7 +56,8 @@ struct LoginView: View {
                             }
                             
                             viewModel.loginUser(email: email, password: password)
-                            UserDefaults.standard.set(true, forKey: "loggedIn")
+//                            UserDefaults.standard.set(true, forKey: "loggedIn")
+                            loggedIn = true
                         }
                         .foregroundColor(.white)
                         .fontWeight(.bold)
