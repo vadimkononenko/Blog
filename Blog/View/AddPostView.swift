@@ -9,8 +9,6 @@ import SwiftUI
 
 struct AddPostView: View {
     
-    var user: UserEntity
-    
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var viewModel: BlogViewModel
@@ -20,15 +18,15 @@ struct AddPostView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 30) {
                 TextField("Post title", text: $title)
                     .padding()
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 1)
                     }
-                    .autocapitalization(.none)
                     .autocorrectionDisabled(true)
+                    .padding(.top, 50)
                 
                 TextField("Post content", text: $content)
                     .padding()
@@ -36,13 +34,14 @@ struct AddPostView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(lineWidth: 1)
                     }
-                    .autocapitalization(.none)
                     .autocorrectionDisabled(true)
+                
+                Spacer()
                 
                 HStack {
                     Button("Add") {
                         if !title.isEmpty, !content.isEmpty {
-                            viewModel.addPostToUser(user, title: title, content: content)
+                            viewModel.addPostToUser(title: title, content: content)
                             
                             dismiss()
                         }
@@ -64,18 +63,15 @@ struct AddPostView: View {
                     .cornerRadius(10)
                 }
                 .padding()
-                
-                Spacer()
             }
-            .navigationTitle("Create Post")
             .padding()
         }
     }
     
 }
 
-//struct AddPostView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddPostView()
-//    }
-//}
+struct AddPostView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddPostView()
+    }
+}

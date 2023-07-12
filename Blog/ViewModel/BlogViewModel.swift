@@ -33,7 +33,6 @@ class BlogViewModel: ObservableObject {
             switch result {
             case .success(let user):
                 self.loggedInUser = user
-                /// will change it
                 self.loggedInUserID = user.id?.uuidString ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
@@ -67,7 +66,9 @@ class BlogViewModel: ObservableObject {
     
     //MARK: - Adding post
     
-    func addPostToUser(_ user: UserEntity, title: String, content: String) {
+    func addPostToUser(title: String, content: String) {
+        guard let user = loggedInUser else { return }
+        
         manager.addPostToUser(user, title: title, content: content)
         
         save()

@@ -46,6 +46,7 @@ class CoreDataManager {
     func createUser(username: String, email: String, password: String) {
         let user = UserEntity(context: context)
         
+        user.id = UUID()
         user.username = username
         user.email = email
         user.password = password
@@ -56,8 +57,10 @@ class CoreDataManager {
     func createPost(title: String, content: String) -> PostEntity {
         let post = PostEntity(context: context)
         
+        post.id = UUID()
         post.title = title
         post.content = content
+        post.timestamp = Date()
         
         return post
     }
@@ -73,11 +76,7 @@ class CoreDataManager {
     //MARK: - Adding post
     
     func addPostToUser(_ user: UserEntity, title: String, content: String) {
-        let post = PostEntity(context: context)
-        
-        post.title = title
-        post.content = content
-        post.timestamp = Date()
+        let post = createPost(title: title, content: content)
         
         user.addToPosts(post)
         

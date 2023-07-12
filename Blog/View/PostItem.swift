@@ -14,7 +14,7 @@ struct PostItem: View {
     var body: some View {
         VStack(spacing: 15) {
             HStack {
-                Text(post.title ?? "")
+                Text(post.title ?? "" + (post.id?.uuidString ?? ""))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeight(.regular)

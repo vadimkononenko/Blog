@@ -12,11 +12,13 @@ struct HomeView: View {
     @AppStorage("loggedIn") private var loggedIn = false
     @EnvironmentObject private var viewModel: BlogViewModel
     
+    @State private var showAddPost: Bool = false
+    
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
-                    ForEach(viewModel.posts) { post in
+                    ForEach(viewModel.posts.reversed()) { post in
                         PostItem(post: post)
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal, 20)
@@ -34,7 +36,7 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        showAddPost = true
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -61,6 +63,11 @@ struct HomeView: View {
                     .tint(.black)
                 }
             }
+        }
+        .sheet(isPresented: $showAddPost) {
+            AddPostView()
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
         }
         .environmentObject(viewModel)
     }
