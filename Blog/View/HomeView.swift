@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @AppStorage("loggedIn") private var loggedIn = false
     @EnvironmentObject private var viewModel: BlogViewModel
     
     var body: some View {
@@ -30,12 +31,34 @@ struct HomeView: View {
                         .font(.title)
                         .fontWeight(.medium)
                 }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(systemName: "person.fill")
-                        .padding(7)
-                        .background(Color.gray)
-                        .clipShape(Circle())
+                    Button {
                         
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .tint(.black)
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button("Profile") {
+                            
+                        }
+                        Button("Logout") {
+                            viewModel.logoutUser()
+                            loggedIn = false
+                        }
+                    } label: {
+                        Image(systemName: "person.fill")
+                            .padding(7)
+                            .overlay {
+                                Circle()
+                                    .stroke()
+                            }
+                    }
+                    .tint(.black)
                 }
             }
         }
