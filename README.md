@@ -1,6 +1,6 @@
-# BlogApp
+# Blog
 
-This is blog application for reviewing other users posts feed and you can share your own thoughts. CoreData and UserDefaults help to remember last logged in user and open just HomeView, and show all users posts.
+Blog is a simple blogging app built with SwiftUI and CoreData. Users can create and delete their posts. The app also includes a profile where users can see the total number of posts they have created and delete them.
 
 Tech stack: SwiftUI, CoreData, UserDefaults
 
